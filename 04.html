@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style lang="">
+    .red {
+        color: red
+    }
+</style>
+
+<body>
+    <div id="root">
+        <button title="title" class="red">Button</button>
+        <button :title="title" :class="className">Button</button>
+        <button v-bind:title="title">Button</button>
+        
+        <button :title="title" :class="{'red': isRed}" @click="toggleClass">Toggle Class Button</button>
+    </div>
+    <script src="https://unpkg.com/vue@2.5.15/dist/vue.js"></script>
+    <script>
+        let app = new Vue({
+            el: '#root',
+            data: {
+                title: 'Hollo World',
+                className: 'red',
+                isRed: false
+            },
+            methods: {
+                toggleClass(){
+                    this.isRed = !this.isRed;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
