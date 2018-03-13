@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root">
+        <ul>
+            <li v-for="name in names">{{name}}</li>
+        </ul>
+
+        <ul>
+            <li v-for="name in names" v-text="name"></li>
+        </ul>
+
+        <input type="text" v-model="newName">
+        <button v-on:click="addName">Add name</button>
+        <button @click="addName">Add name</button>
+
+    </div>
+
+    <script src="https://unpkg.com/vue@2.5.15/dist/vue.js"></script>
+    <script>
+        let app = new Vue({
+            el: '#root',
+            data: {
+                message: 'Hollo World',
+                newName: '',
+                names: ['for', 'echo']
+            },
+            methods: {
+                addName() {
+                    this.names.push(this.newName);
+                    this.newName = '';
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
