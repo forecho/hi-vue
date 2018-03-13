@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root">
+        All Tasks
+        <ul>
+            <li v-for="task in tasks" v-text="task.description"></li>
+        </ul>
+
+        Completed Tasks
+        <!-- 方式一 -->
+        <ul>
+            <li v-for="task in tasks" v-if="task.completed" v-text="task.description"></li>
+        </ul>
+        <!-- 方式二 -->
+        <ul>
+            <li v-for="task in completedTasks" v-text="task.description"></li>
+        </ul>
+
+    </div>
+
+    <script src="https://unpkg.com/vue@2.5.15/dist/vue.js"></script>
+    <script>
+        let app = new Vue({
+            el: '#root',
+            data: {
+                tasks: [{
+                        description: 'first',
+                        completed: true
+                    },
+                    {
+                        description: 'second',
+                        completed: false
+                    },
+                    {
+                        description: 'third',
+                        completed: true
+                    },
+                    {
+                        description: 'fourth',
+                        completed: false
+                    },
+                    {
+                        description: 'fifth',
+                        completed: false
+                    },
+                ],
+            },
+            computed: {
+                completedTasks() {
+                    return this.tasks.filter(task => task.completed);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
